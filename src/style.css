@@ -27,8 +27,16 @@ img {
 
 /* styles */
 body {
-    background: #eee;
+    /*background-size: 100% 100%;*/
+    background: url(../img/background.png) no-repeat;
+    height: 100vh;
+    border: 1px solid transparent;
+    /*overflow: hidden;*/
 }
+
+/*::-webkit-scrollbar{*/
+/*    display:none*/
+/*}*/
 
 .globalHeader {
     margin: 26px;
@@ -42,6 +50,7 @@ body {
 
 .searchForm {
     display: flex;
+
     justify-content: space-between;
 }
 
@@ -52,6 +61,8 @@ body {
         /*margin: 0 auto;不安全*/
         margin-left: auto;
         margin-right: auto;
+        margin-top: 100px;
+        margin-bottom: 64px;
     }
 }
 
@@ -59,7 +70,7 @@ body {
     width: 100%;
     margin-right: 16px;
     padding: 0 10px;
-    border: none;
+    border: 2px solid #70c1b3;
     border-radius: 4px;
     height: 40px;
 }
@@ -67,11 +78,17 @@ body {
 .globalHeader button {
     white-space: nowrap;
     padding: 0 32px;
-    border: none;
+    border: 2px solid #ffe066;
     border-radius: 4px;
     background: #0282B9;
     font-size: 16px;
     color: white;
+}
+
+.globalHeader button:active {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    color: #00aeff;
+    background: #d9efff;
 }
 
 .globalMain {
@@ -165,6 +182,7 @@ body {
 
 .siteList .addButton {
     border: 1px solid #dddddd;
+    border-radius: 4px;
     background: white;
     width: 152px;
     display: flex;

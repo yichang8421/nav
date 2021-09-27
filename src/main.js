@@ -8,9 +8,13 @@ const xObject = JSON.parse(x);
 
 const hashMap = xObject || [
     {logo: 'B', logoType: 'text', url: 'https://bilibili.com'},
-    {logo: 'F', logoType: 'image', url: 'https://figma.com/'},
+    {logo: 'C', logoType: 'image', url: 'https://codepen.io/pen/'},
+    {logo: 'F', logoType: 'image', url: 'https://freecodecamp.org/learn/'},
     {logo: 'G', logoType: 'text', url: 'https://github.com/'},
     {logo: 'N', logoType: 'text', url: 'https://nicovideo.jp/'},
+    {logo: 'W', logoType: 'text', url: 'https://zh.wikipedia.org'},
+    {logo: 'V', logoType: 'text', url: 'https://vuejs.org/'},
+    {logo: 'R', logoType: 'text', url: 'https://reactjs.org/'},
 ];
 
 const simplifyUrl = (url) => {
@@ -26,7 +30,7 @@ const render = () => {
     $siteList.find('li:not(.last)').remove();
 
     // 优化：可以使用hashMap.slice(2:)从第三个元素开始渲染
-    hashMap.forEach((node,index) => {
+    hashMap.forEach((node, index) => {
         // console.log(index);
         const $li = $(`
         <li>
@@ -51,7 +55,7 @@ const render = () => {
         $li.on('click', '.close', (e) => {
             e.stopPropagation();
             // console.log(hashMap);
-            hashMap.splice(index,1,);
+            hashMap.splice(index, 1,);
             render();
         });
     });
@@ -85,6 +89,10 @@ $('.addButton')
     .on('click', () => {
         let url = window.prompt('请输入您要添加的网址：');
         console.log(url);
+        if (!url && url !== null) {
+            window.alert("输入不能为空哦");
+            return;
+        }
         if (url.indexOf('https') !== 0) {
             url = 'https://' + url;
         }
@@ -112,12 +120,12 @@ window.onbeforeunload = () => {
 };
 
 // 键盘事件
-$(document).on('keypress',(e)=>{
+$(document).on('keypress', (e) => {
     const {key} = e;
     //const key = e.key;
     // console.log(key);
-    for(let i =0 ;i<hashMap.length;i++){
-        if(hashMap[i].logo.toLowerCase() === key){
+    for (let i = 0; i < hashMap.length; i++) {
+        if (hashMap[i].logo.toLowerCase() === key) {
             window.open(hashMap[i].url);
         }
     }
